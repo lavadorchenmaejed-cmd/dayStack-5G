@@ -1,35 +1,21 @@
-import { Stack } from "expo-router";
-import { Platform } from "react-native";
+import { Stack, router } from "expo-router";
+import { Platform, Pressable, Text } from "react-native";
+
 
 export default function RootLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
-        headerStyle: {
-          backgroundColor: "#16352F",
-        },
-
-        headerShadowVisible: false,
-
+        headerStyle: { backgroundColor: "#0b1f1a"},
         headerTintColor: "#E8DCC4",
-
-        headerTitleStyle: {
-          fontFamily: Platform.select({
-            ios: "Georgia",
-            android: "serif",
-            default: "serif",
-          }),
-          fontSize: 21,
-          fontWeight: "600",
-          letterSpacing: 0.5,
-          color: "#F5F0E6",
-        },
-
-        headerTitleAlign: "start",
-
-        headerBackTitle: "Back",
+        headerShadowVisible: false,
+        headerShown: true,
+        contentStyle: { backgroundColor: "#0b1f1a" },
       }}
-    />
+    >
+      <Stack.Screen name="index" options={{ title: "dayStack" }} />
+      <Stack.Screen name="home" options={{ title: "dayStack: To do list" }} />
+      <Stack.Screen name="developer" options={{ title: "The Developer behind the App: 5G" }} />
+    </Stack>
   );
 }
