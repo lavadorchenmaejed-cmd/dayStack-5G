@@ -2,10 +2,10 @@
 // Static About page: 4 member profiles (edit the members array below)
 import { LinearGradient } from "expo-linear-gradient";
 import {
-    Image,
-    ImageSourcePropType,
-    Text,
-    View
+  Image,
+  ImageSourcePropType,
+  Text,
+  View
 } from "react-native";
 
 type Member = {
@@ -70,3 +70,56 @@ export default function About() {
     </LinearGradient>
   );
 }
+
+const styles = StyleSheet.create({
+  title: { 
+    color: "#E8DCC4", 
+    fontSize: 34, 
+    fontWeight: "800", 
+    fontStyle: "italic", 
+    fontFamily: "serif" 
+  },
+  h2: { 
+    color: "#E8DCC4", 
+    fontSize: 18, 
+    fontWeight: "700" 
+  },
+  muted: { 
+    color: "#9fb3a8", 
+    fontSize: 14 
+  },
+  role: { 
+    color: "#D9A441", 
+    fontWeight: "700" 
+  },
+  card: {
+    backgroundColor: "rgba(232,220,196,0.08)",
+    borderColor: "rgba(232,220,196,0.25)",
+    borderWidth: 1,
+    borderRadius: 20,
+    padding: 14,
+    marginBottom: 14,
+    width: "48%",
+    alignItems: "center",
+  },
+  grid: { 
+    flexDirection: "row", 
+    flexWrap: "wrap", 
+    justifyContent: "space-between", 
+    maxWidth: 600, 
+    width: "100%", 
+    alignSelf: "center", 
+    marginTop: 40,
+},
+  row: { 
+    alignItems: "center", 
+    gap: 10 
+},
+  avatar: { 
+    width: 80, 
+    height: 80, 
+    borderRadius: 40, 
+    borderWidth: 2, 
+    borderColor: "#D9A441" 
+},
+});
