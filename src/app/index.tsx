@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import {
   KeyboardAvoidingView, 
   Platform, 
@@ -14,7 +14,11 @@ import { LinearGradient } from "expo-linear-gradient";
 export default function Landing() {
   const [name, setName] = useState("");
   const canEnter = name.trim().length > 0;
-
+  
+ useEffect(() => {
+  console.log("Name changed to:", name);
+}, [name]);
+  
   const enter = () => {
     if (!canEnter) return;
     router.push({ pathname: "/home", params: { name: name.trim() } });
