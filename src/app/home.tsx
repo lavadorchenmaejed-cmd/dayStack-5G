@@ -1,6 +1,6 @@
 
 import { useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FlatList,
   Pressable,
@@ -23,6 +23,11 @@ export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   const canAdd = task.trim().length > 0;
+
+useEffect(() => {
+  console.log("New Task!", task);
+}, [task]);
+  
   const remaining = tasks.filter((t) => !t.done).length;
 
   const addTask = () => {
