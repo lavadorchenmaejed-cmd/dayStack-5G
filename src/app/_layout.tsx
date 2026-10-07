@@ -1,6 +1,4 @@
-import { Stack, router } from "expo-router";
-import { Platform, Pressable, Text } from "react-native";
-
+import { Stack } from "expo-router";
 
 export default function RootLayout() {
   return (
