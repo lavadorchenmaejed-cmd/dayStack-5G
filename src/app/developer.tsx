@@ -2,6 +2,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import {
   Image,
   ImageSourcePropType,
+  StyleSheet,
   Text,
   View
 } from "react-native";
