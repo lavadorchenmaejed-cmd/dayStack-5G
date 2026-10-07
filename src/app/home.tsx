@@ -153,3 +153,57 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     marginTop: -2,
   },
+  card: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "rgba(255,255,255,0.07)",
+    borderRadius: 16,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    marginBottom: 10,
+  },
+  cardLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  check: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: "#D9A441",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 14,
+  },
+  checkDone: {
+     backgroundColor: "#D9A441" 
+    },
+  checkMark: {
+     color: "#0b1f1a", 
+     fontSize: 14, 
+     fontWeight: "800" 
+    },
+  taskText: { 
+    color: "#E8DCC4", 
+    fontSize: 18, 
+    flex: 1 
+  },
+  taskDone: { 
+    textDecorationLine: "line-through", 
+    opacity: 0.45 
+  },
+  delete: {
+    color: "#9fb3a8", 
+    fontSize: 18,  
+    paddingLeft: 12 
+  },
+  empty: {
+    color: "#9fb3a8",
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 40,
+  },
+});
