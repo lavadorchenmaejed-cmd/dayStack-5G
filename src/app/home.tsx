@@ -103,3 +103,53 @@ export default function Home() {
     </LinearGradient>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 24,
+    paddingTop: 15,
+  },
+  greeting: {
+    color: "#E8DCC4",
+    fontSize: 48,
+    fontWeight: "600",
+    fontFamily: "Times New Roman",
+  },
+  muted: {
+    color: "#9fb3a8",
+    fontSize: 16,
+    marginTop: 6,
+    marginBottom: 28,
+  },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 25,
+  },
+  input: {
+    flex: 1,
+    color: "#E8DCC4",
+    fontSize: 18,
+    backgroundColor: "rgba(255,255,255,0.07)",
+    borderRadius: 16,
+    paddingHorizontal: 18,
+    paddingVertical: 14,
+    borderWidth: 1,
+    borderColor: "rgba(217,164,65,0.35)",
+  },
+  addBtn: {
+    backgroundColor: "#D9A441",
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 12,
+  },
+  addBtnText: {
+    color: "#0b1f1a",
+    fontSize: 30,
+    fontWeight: "800",
+    marginTop: -2,
+  },
