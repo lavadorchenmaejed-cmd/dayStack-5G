@@ -1,6 +1,4 @@
-//developer
-// Static About page: 4 member profiles (edit the members array below)
-import { LinearGradient } from "expo-linear-gradient";
+import { LinearGradient } from "expo-linear-gradient"; 
 import {
   Image,
   ImageSourcePropType,
