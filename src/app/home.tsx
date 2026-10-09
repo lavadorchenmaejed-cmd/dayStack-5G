@@ -103,7 +103,8 @@ useEffect(() => {
           renderItem={({ item }) => (
             <View style={styles.card}>
               <Pressable style={styles.cardLeft} onPress={() => toggleTask(item.id)}>
-                <View style={[styles.check, item.done && styles.checkDone]}> {/*this is the circular checkbox with its functions*/}
+                {/*this is the circular checkbox with its functions*/}
+                <View style={[styles.check, item.done && styles.checkDone]}> 
                   {item.done && <Text style={styles.checkMark}>✓</Text>}
                 </View>
 
