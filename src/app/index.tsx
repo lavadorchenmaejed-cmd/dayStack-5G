@@ -1,7 +1,7 @@
 import { router } from "expo-router";
 import { useState, useEffect} from "react";
 import {
-  KeyboardAvoidingView, 
+  KeyboardAvoidingView, //i position niya ang keyboard sa screen para di matabunan ang input
   Platform, 
   Pressable,
   StyleSheet, 
@@ -12,16 +12,19 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function Landing() {
-  const [name, setName] = useState("");
-  const canEnter = name.trim().length > 0;
   
+  const [name, setName] = useState(""); //creates a variable name and starts as an empty string
+  const canEnter = name.trim().length > 0; //.trim() removes extra spaces. Maka enter ra siya if ang value is greater than 0
+
+  //runs everytime the name changes
  useEffect(() => {
   console.log("Name changed to:", name);
 }, [name]);
-  
+
+  //mao ni ang function sa button na "Enter List"
   const enter = () => {
-    if (!canEnter) return;
-    router.push({ pathname: "/home", params: { name: name.trim() } });
+    if (!canEnter) return; //if the name is empty, dili maka enter
+    router.push({ pathname: "/home", params: { name: name.trim() } }); //if dili empty ang name, mo adto siya sa home
   };
 
   return (
@@ -37,9 +40,9 @@ export default function Landing() {
 
         <View>
           <TextInput
-            value={name}
-            onChangeText={setName}
-            onSubmitEditing={enter}
+            value={name} //current value sa name
+            onChangeText={setName} //updates the name whenever the user types
+            onSubmitEditing={enter} //runs enter() when the user presses the keyboard's submit button 
             placeholder="what should we call you?"
             placeholderTextColor="#9fb3a8"
             maxLength={20}
@@ -49,19 +52,19 @@ export default function Landing() {
 
 
         <Pressable
-          onPress={enter}
+          onPress={enter} //// Runs enter() when the button is pressed
           disabled={!canEnter}
-          style={({ pressed }) => [
+          style={({ pressed }) => [ // Changes the button style depending on its state
             styles.btn,
-            !canEnter && { opacity: 0.4 },
-            pressed && { transform: [{ scale: 0.97 }] },
+            !canEnter && { opacity: 0.4 }, // Makes the button faded when disabled
+            pressed && { transform: [{ scale: 0.97 }] }, // Makes the button slightly smaller while being pressed
           ]}
         >
           <Text style={styles.btnText}>Enter List →</Text>
         </Pressable>
 
         <Pressable
-          onPress={() => router.push("/developer")}
+          onPress={() => router.push("/developer")} // Navigate to the developer screen
           style={({ pressed }) => [
             { marginTop: 20 },
             pressed && { transform: [{ scale: 0.97 }] },
