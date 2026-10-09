@@ -1,4 +1,4 @@
-import { LinearGradient } from "expo-linear-gradient"; 
+import { LinearGradient } from "expo-linear-gradient"; //gi install pani before magamit
 import {
   Image,
   ImageSourcePropType,
@@ -7,6 +7,7 @@ import {
   View
 } from "react-native";
 
+//Defines the structure or type of one team member
 type Member = {
   name: string;
   role: string;
@@ -14,6 +15,7 @@ type Member = {
   image: ImageSourcePropType;
 };
 
+//creates an array containing all team members
 const members: Member[] = [
   {
     name: "Chenmae Jed Lavador",
@@ -45,6 +47,7 @@ export default function About() {
   return (
     <LinearGradient colors={["#0b1f1a", "#16352F", "#0b1f1a"]} style={{ flex: 1 }}>
         <View style={styles.grid}>
+          {/*I loop niya tanan member. "m" represents the current member*/}
         {members.map((m) => (
           <View key={m.name} style={styles.card}>
             <View style={styles.row}>
