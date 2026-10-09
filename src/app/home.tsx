@@ -1,8 +1,8 @@
 
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router"; // Imports the function used to receive parameters from another screen.
 import { useState, useEffect } from "react";
 import {
-  FlatList,
+  FlatList, // Displays a list efficiently.
   Pressable,
   StyleSheet,
   Text,
@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+// Defines what information one task must have.
 type Task = { 
     id: string; 
     text: string; 
@@ -18,36 +19,49 @@ type Task = {
 };
 
 export default function Home() {
-  const { name } = useLocalSearchParams<{ name: string }>();
-  const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const { name } = useLocalSearchParams<{ name: string }>();   // Gets the "name" parameter sent from the previous screen or the index.
+  const [task, setTask] = useState("");   // Stores the text currently being typed in the input.
+  const [tasks, setTasks] = useState<Task[]>([]); // Stores all of the tasks. It starts as an empty array.
 
-  const canAdd = task.trim().length > 0;
+  const canAdd = task.trim().length > 0;   // Checks if the input contains actual text. trim() removes extra spaces.
 
+  //runs whenever a task is typed on the input box
 useEffect(() => {
   console.log("New Task!", task);
 }, [task]);
-  
-  const remaining = tasks.filter((t) => !t.done).length;
 
+  
+  const remaining = tasks.filter((t) => !t.done).length;   // Counts how many tasks are NOT completed.
+
+   // Function for adding a new task.
   const addTask = () => {
-    if (!canAdd) return;
-    setTasks((prev) => [{ id: Date.now().toString(), text: task.trim(), done: false }, ...prev]);
+    if (!canAdd) return;  // If the input is empty, stop the function.
+    setTasks((prev) => [{ id: Date.now().toString(), // Creates a unique ID using the current time.
+                         text: task.trim(), // Saves the task text.
+                         done: false }, ...prev]);  // New tasks are not completed.
     setTask("");
   };
-
+  // Function for marking a task as completed/uncompleted.
   const toggleTask = (id: string) => {
-    setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)));
+    setTasks((prev) => prev.map((t) => // Goes through every task.
+      (t.id === id ? { ...t, done: !t.done } : t))); // If this is the selected task, change its done value. If it is not the selected task, leave it unchanged.
   };
 
+  //function for deleting task
   const deleteTask = (id: string) => {
-    setTasks((prev) => prev.filter((t) => t.id !== id));
+    setTasks((prev) => prev.filter((t) => t.id !== id));    // Keeps every task except the one with the matching ID.
   };
 
   return (
     <LinearGradient colors={["#0b1f1a", "#16352F", "#0b1f1a"]} style={{ flex: 1 }}>
       <View style={styles.container}>
         <Text style={styles.greeting}>Hi, {name}!</Text>
+        
+        {/* 
+          Below shows different text depending on whether there are tasks.
+          If there are no tasks → "Nothing on your to do list yet"
+          If there are tasks → shows how many are left.
+        */}
         <Text style={styles.muted}>
           {tasks.length === 0
             ? "Nothing on your to do list yet"
@@ -89,15 +103,16 @@ useEffect(() => {
           renderItem={({ item }) => (
             <View style={styles.card}>
               <Pressable style={styles.cardLeft} onPress={() => toggleTask(item.id)}>
-                <View style={[styles.check, item.done && styles.checkDone]}>
+                <View style={[styles.check, item.done && styles.checkDone]}> {/*this is the circular checkbox with its functions*/}
                   {item.done && <Text style={styles.checkMark}>✓</Text>}
                 </View>
 
-                <Text style={[styles.taskText, item.done && styles.taskDone]}>
+                <Text style={[styles.taskText, item.done && styles.taskDone]}> {/*if the task is done, adds a line through*/}
                   {item.text}
                 </Text>
               </Pressable>
 
+              {/* Button for deleting the task. */}
               <Pressable onPress={() => deleteTask(item.id)} hitSlop={10}>
                 <Text style={styles.delete}>✕</Text>
               </Pressable>
